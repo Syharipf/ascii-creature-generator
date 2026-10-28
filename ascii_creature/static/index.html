@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ASCII Creature Generator</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="app-layout">
+    <section class="left-panel">
+      <div class="canvas-wrap">
+        <canvas id="preview"></canvas>
+      </div>
+      <div class="stats-bar" id="stats">Drop or select an image to begin.</div>
+      <div class="error-banner hidden" id="error"></div>
+      <details class="text-preview-wrap">
+        <summary>Plain Text Art</summary>
+        <pre id="text"></pre>
+      </details>
+    </section>
+
+    <aside class="right-panel">
+      <div id="drop" class="drop-zone">
+        <input type="file" id="file" accept="image/*">
+        <p>Drop creature photo here or <span>browse</span></p>
+      </div>
+
+      <div class="controls-grid">
+        <div class="control-row">
+          <label for="id">ID</label>
+          <input type="text" id="id" placeholder="creature-id">
+        </div>
+
+        <div class="control-row">
+          <label for="name">Name</label>
+          <input type="text" id="name" placeholder="Creature Name">
+        </div>
+
+        <div class="control-row">
+          <label for="cols">Columns <span id="cols-val">28</span></label>
+          <input type="range" id="cols" min="8" max="96" value="28">
+        </div>
+
+        <div class="control-row">
+          <label for="tolerance">Tolerance <span id="tolerance-val">32</span></label>
+          <input type="range" id="tolerance" min="0" max="120" value="32">
+        </div>
+
+        <div class="control-row">
+          <label for="coverage">Coverage <span id="coverage-val">40%</span></label>
+          <input type="range" id="coverage" min="5" max="95" value="40">
+        </div>
+
+        <div class="control-row">
+          <label for="posterize">Posterize <span id="posterize-val">16</span></label>
+          <select id="posterize">
+            <option value="0">Off</option>
+            <option value="4">4</option>
+            <option value="8">8</option>
+            <option value="16" selected>16</option>
+            <option value="32">32</option>
+            <option value="64">64</option>
+          </select>
+        </div>
+
+        <div class="control-row">
+          <label for="head_side">Head Side</label>
+          <select id="head_side">
+            <option value="left" selected>Left</option>
+            <option value="right">Right</option>
+          </select>
+        </div>
+
+        <div class="section-title">Motion</div>
+
+        <div class="control-row">
+          <label for="preset">Preset</label>
+          <select id="preset">
+            <option value="swim" selected>swim</option>
+            <option value="glide">glide</option>
+            <option value="flap">flap</option>
+            <option value="crawl">crawl</option>
+          </select>
+        </div>
+
+        <div class="control-row">
+          <label for="amplitude">Amplitude <span id="amplitude-val">1.0</span></label>
+          <input type="range" id="amplitude" min="0" max="3" step="0.05" value="1.0">
+        </div>
+
+        <div class="control-row">
+          <label for="speed">Speed <span id="speed-val">0.55</span></label>
+          <input type="range" id="speed" min="0" max="2" step="0.05" value="0.55">
+        </div>
+
+        <div class="control-row">
+          <label for="wavelength">Wavelength <span id="wavelength-val">1.1</span></label>
+          <input type="range" id="wavelength" min="0.3" max="3" step="0.05" value="1.1">
+        </div>
+
+        <div class="control-row">
+          <label for="bob">Bob <span id="bob-val">0.35</span></label>
+          <input type="range" id="bob" min="0" max="2" step="0.05" value="0.35">
+        </div>
+
+        <div class="section-title">Perspective &amp; POV</div>
+
+        <div class="control-row">
+          <label for="pov">POV</label>
+          <select id="pov">
+            <option value="side" selected>Side (Profile)</option>
+            <option value="top">Top-Down (Overhead)</option>
+            <option value="isometric">Isometric (3/4)</option>
+            <option value="bottom">Bottom-Up</option>
+          </select>
+        </div>
+
+        <div class="control-row">
+          <label for="pitch">Pitch <span id="pitch-val">0°</span></label>
+          <input type="range" id="pitch" min="-60" max="60" step="5" value="0">
+        </div>
+
+        <div class="control-row">
+          <label for="roll">Roll <span id="roll-val">0.15</span></label>
+          <input type="range" id="roll" min="0.0" max="1.0" step="0.05" value="0.15">
+        </div>
+
+        <div class="actions-row">
+          <button type="button" id="reset" class="btn secondary">Reset</button>
+          <button type="button" id="export" class="btn primary">Export Component</button>
+        </div>
+
+        <div id="export-result" class="export-result"></div>
+      </div>
+    </aside>
+  </div>
+  <script type="module" src="/static/app.js"></script>
+</body>
+</html>
